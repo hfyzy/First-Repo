@@ -1,0 +1,44 @@
+CLIPS> (defrule rule1
+(patient-sore-throat)
+(bacterial-infection)
+=>
+(assert(patient-strep-throat)))
+CLIPS> (assert(patient-sore-throat)
+(bacterial-infection))
+
+CLIPS> (defrule rule2
+(patient-temperature-40)
+=>
+(assert(patient-fever)))
+
+CLIPS> (defrule rule3 (patient-sick-over-a-month)
+(patient-fever)
+=>
+(assert(bacterial-infection)))
+CLIPS> (assert(patient-temperature-40)
+(patient-sore-throat)
+(patient-sick-over-a-month))
+
+
+(defrule ask-sick
+	(patient-has-fever)	
+=>
+	(printout t "Question: is the patient's temperature more than 39? [yes/no]? " crlf)
+	(printout t "Answer [yes/no]: ")
+	(assert	(patient-fever(read))))
+
+
+(defrule ask-sick
+	(patient-has-fever)	
+=>
+	(printout t "Question: Does the patient sick over a month? [yes/no]? " crlf)
+	(printout t "Answer [yes/no]: ")
+	(assert	(patient-sick-over-month(read))))
+
+
+(defrule ask-sick
+	(patient-has-fever)	
+=>
+	(printout t "Question: Has the patient a sore thoat? [yes/no]? " crlf)
+	(printout t "Answer [yes/no]: ")
+	(assert	(bacteria-infection(read))))

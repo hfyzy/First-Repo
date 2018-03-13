@@ -1,0 +1,16 @@
+able to perform individual task and cooperate with all group member
+exchange opinion and idea with the group member.
+able to deliver an result through every assignment and project.
+able to absord the knowledge from lecture and apply into assignment and project
+
+
+
+roc curve use as fundamental tool for daignostic test evaluation
+commonly used for recall, precision, f-factor and rand accuracy in clear understanding way
+roc consist of sensitivity as Y-axis and specificity as X-axis
+to increase sensitivity true positive must be greater than random classification which is more than 50%
+formula for specificity = 1 - false positive rate
+application of the ROC Curve
+in signal detected or radar
+clinical trials
+					

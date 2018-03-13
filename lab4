@@ -1,0 +1,141 @@
+         CLIPS (Quicksilver Beta 12/31/07)
+CLIPS> (assert(colour red))
+<Fact-1>
+CLIPS> (retract 1)
+CLIPS> (colour green)
+
+[EXPRNPSR3] Missing function declaration for colour.
+CLIPS> (assert(colour green))
+<Fact-2>
+CLIPS> (defrule duck
+(animal is-duck)
+=>
+(assert(sounnd-is quack)))
+CLIPS> (clear)
+CLIPS> (defrule duck
+(animal-is duck)
+=>
+(assert(sound-is quack)))
+CLIPS> (assert(animal-is duck))
+<Fact-1>
+CLIPS> (run)
+CLIPS> (defrule is-it-a-duck)
+
+[PRNTUTIL2] Syntax Error:  Check appropriate syntax for defrule.
+
+ERROR:
+(defrule MAIN::is-it-a-duck)
+CLIPS> (animal-has vebbed-feet)
+
+[EXPRNPSR3] Missing function declaration for animal-has.
+CLIPS> (assert(animal-has vebbed-feet)
+(animal-has fearthers))
+<Fact-4>
+CLIPS> (clear)
+CLIPS> (defrule patient
+(we-suspect-a bacterial-infection)
+(we-believe-the patient-has-strep-throat)
+=>
+(assert(human-is patient)))
+CLIPS> (reset)
+CLIPS> (assert(we-suspect-a bacterial-infecrion)
+(we-believe-the patient-has-strep-throat))
+<Fact-2>
+CLIPS> (run)
+CLIPS> (assert(we-suspect-a bacterial-infection)
+(we-believe-the patient-has-strep-throat))
+FALSE
+CLIPS> (clear)
+CLIPS> (defrule rule1
+(patient-sore-throat)
+(bacterial-infection)
+=>
+(patient-strep-throat))
+
+[EXPRNPSR3] Missing function declaration for patient-strep-throat.
+
+ERROR:
+(defrule MAIN::rule1
+   (patient-sore-throat)
+   (bacterial-infection)
+   =>
+   (patient-strep-throat
+CLIPS> (defrule rule1
+(patient-sore-throat)
+(bacterial-infection)
+=>
+(patient-strep-throat)))
+
+[EXPRNPSR3] Missing function declaration for patient-strep-throat.
+
+ERROR:
+(defrule MAIN::rule1
+   (patient-sore-throat)
+   (bacterial-infection)
+   =>
+   (patient-strep-throat
+CLIPS> (defrule rule1
+(patient-sore-throat)
+(bacterial-infection)
+=>
+(assert(patient-strep-throat)))
+CLIPS> (rules)
+rule1
+For a total of 1 defrule.
+CLIPS> (assert(patient-sore-throat)
+(bacterial-infection))
+<Fact-2>
+CLIPS> (run)
+CLIPS> (defrule rule2
+(patient-temperature-40)
+=>
+assert(patient-fever)))
+
+[EXPRNPSR3] Missing function declaration for patient-fever.
+
+ERROR:
+(defrule MAIN::rule2
+   (patient-temperature-40)
+   =>
+   assert
+   (patient-fever
+CLIPS> (defrule rule2
+(patient-temperature-40)
+=>
+(assert(patient-fever)))
+CLIPS> (rules)
+rule1
+rule2
+For a total of 2 defrules.
+CLIPS> (defrule rule3 (patient-sick-over-a-month)
+(patient-fever)
+=>
+(assert(bacterial-infection)))
+CLIPS> (rules)
+rule1
+rule2
+rule3
+For a total of 3 defrules.
+CLIPS> (assert(patient-temperature-40)
+(patient-sore-throat)
+(patient-sick-over-a-month))
+<Fact-5>
+CLIPS> (run)
+CLIPS> (reset)
+CLIPS> (assert(patient-temperature-40)
+(patient-sore-throat)
+(patient-sick-over-a-month))
+<Fact-3>
+CLIPS> (run)
+CLIPS> (reset)
+CLIPS> (rules)
+rule1
+rule2
+rule3
+For a total of 3 defrules.
+CLIPS> (assert(patient-temperature-40)
+(patient-sore-throat)
+(patient-sick-over-a-month))
+<Fact-3>
+CLIPS> (run)
+CLIPS> 

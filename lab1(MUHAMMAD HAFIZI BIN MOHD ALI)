@@ -1,0 +1,36 @@
+         CLIPS (Quicksilver Beta 3/26/08)
+CLIPS> (defrule rule1
+(patient-sore-throat)
+(bacterial-infection)
+=>
+(assert(patient-strep-throat)))
+CLIPS> (assert(patient-sore-throat)
+(bacterial-infection))
+<Fact-2>
+CLIPS> (run)
+CLIPS> (defrule rule2
+(patient-temperature-40)
+=>
+(assert(patient-fever)))
+CLIPS> (defrule rule3 (patient-sick-over-a-month)
+(patient-fever)
+=>
+(assert(bacterial-infection)))
+CLIPS> (assert(patient-temperature-40)
+(patient-sore-throat)
+(patient-sick-over-a-month))
+<Fact-5>
+CLIPS> (run)
+CLIPS> (reset)
+CLIPS> (assert(patient-temperature-40)
+(patient-sore-throat)
+(patient-sick-over-a-month))
+<Fact-3>
+CLIPS> (run)
+CLIPS> (reset)
+CLIPS> (assert(patient-temperature-40)
+(patient-sore-throat)
+(patient-sick-over-a-month))
+<Fact-3>
+CLIPS> (run)
+CLIPS> 

@@ -1,0 +1,49 @@
+         CLIPS (Quicksilver Beta 3/26/08)
+CLIPS> (deffacts startup (animal lion) (animal monkey) (animal bird))
+CLIPS> (reset)
+CLIPS> (deffacts startup (animal dog)    (animal cat)   (animal duck)   (animal turtle) 
+(warm-blooded dog)   (warm-blooded cat) 
+(warm-blooded duck) 
+(lays-eggs duck) (lays-eggs turtle) 
+(child-of dog puppy) (child-of cat kitten) (child-of turtle hatchling)
+)
+CLIPS> (reset)
+CLIPS> (defrule animal 
+	(animal ?) 
+=> 
+	(printout t "animal found" crlf))
+CLIPS> (run)
+animal found
+animal found
+animal found
+animal found
+CLIPS> (defrule list-animals
+	(animal ?name)
+=> 
+	(printout t ?name " found" crlf))
+CLIPS> (run)
+dog found
+cat found
+duck found
+turtle found
+CLIPS> (defrule mammal
+	(animal ?name)
+	(warm-blooded ?name)
+	(not (lay-eggs ?name))
+=> 
+	(assert (mammal ?name))
+	(printout t ?name " is a mammal" crlf))
+CLIPS> (run)
+duck is a mammal
+cat is a mammal
+dog is a mammal
+CLIPS> (defrule mammal2
+	(mammal ?name)
+	(child-of ?name ?young)
+=> 
+	(assert (mammal ?young))
+	(printout t ?young " is a mammal" crlf))
+CLIPS> (run)
+puppy is a mammal
+kitten is a mammal
+CLIPS> 
